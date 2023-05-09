@@ -7,7 +7,7 @@ from bs4 import BeautifulSoup
 
 def search(product):
     root = 'https://www.google.com/search?q='
-    suffix = '&tbm=shop'
+    suffix = '&tbm=shop&hl=pt'
     headers = {'User-agent': 'Mozilla/5.0'}
 
     link = root + re.sub('\s', '+', product) + suffix
@@ -15,7 +15,6 @@ def search(product):
 
     if resp is not None:
         st.info('Sucesso na requisição')
-        st.write(resp)
     else:
         st.info('deu errado')
     return resp
@@ -23,8 +22,8 @@ def search(product):
 
 def get_products(html):
     soup = BeautifulSoup(html, 'html.parser')
-    
-    st.write(len(soup))
+
+    st.write(soup)
 
     divs_com_preco = [
         i for i in 
