@@ -6,7 +6,7 @@ st.set_page_config(layout="wide")
 
 st.title('Precificação de qualquer coisa!')
 
-query = st.text_input('O que você quer precificar?')
+query = st.text_input('O que você quer precificar?', value='Mesa de centro')
 df = get_products(search(query))
 
 st.markdown('## Preço sugerido')
