@@ -8,12 +8,13 @@ from bs4 import BeautifulSoup
 def search(product):
     root = 'https://www.google.com/search?q='
     suffix = '&tbm=shop'
+    headers = {'User agent': 'Mozilla/5.0 (Windows; U; MSIE 9.0; Windows NT 9.0; en-US);'}
 
     link = root + re.sub('\s', '+', product) + suffix
-    resp = requests.get(link).content
+    resp = requests.get(link, headers=headers).content
 
     if resp is not None:
-        st.info(resp)
+        st.info('Sucesso na requisição')
     else:
         st.info('deu errado')
     return resp
