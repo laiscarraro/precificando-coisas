@@ -1,6 +1,7 @@
 import re
 import requests
 import pandas as pd
+import streamlit as st
 from bs4 import BeautifulSoup
 
 
@@ -9,7 +10,13 @@ def search(product):
     suffix = '&tbm=shop'
 
     link = root + re.sub('\s', '+', product) + suffix
-    return requests.get(link).content
+    resp = requests.get(link).content
+
+    if resp is not None:
+        st.info(resp)
+    else:
+        st.info('deu errado')
+    return resp
 
 
 def get_products(html):
