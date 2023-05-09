@@ -23,8 +23,7 @@ def search(product):
 def get_products(html):
     soup = BeautifulSoup(html, 'html.parser')
 
-    if soup is None:
-        st.warning('Soup None')
+    st.write(soup)
 
     divs_com_preco = [
         i for i in 
@@ -39,6 +38,8 @@ def get_products(html):
             if 'de R$' in str(j)
         ]) == 0
     ]
+
+    st.write(len(divs_com_preco))
     cols = [
         'site', 'titulo', 'preco', 'rating', 'imagem'
     ]
@@ -81,4 +82,5 @@ def get_products(html):
         vetor_df = pd.DataFrame(vetor).T
         vetor_df.columns = cols
         produtos = produtos.append(vetor_df, ignore_index=True)
+        st.write(produtos)
     return produtos
