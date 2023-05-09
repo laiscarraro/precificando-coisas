@@ -23,7 +23,7 @@ def search(product):
 def get_products(html):
     soup = BeautifulSoup(html, 'html.parser')
     
-    st.write(len(soup))
+    st.write(soup[0])
 
     divs_com_preco = [
         i for i in 
