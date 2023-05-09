@@ -15,6 +15,7 @@ def search(product):
 
     if resp is not None:
         st.info('Sucesso na requisição')
+        st.write(link)
     else:
         st.info('deu errado')
     return resp
